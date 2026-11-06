@@ -11,13 +11,26 @@
 
 <body>
     <div id="app">
-        <h2>Nos produits</h2>
-
-        <ul>
-            <li v-for="product in products">
-                {{ product }}
-            </li>
-        </ul>
+        <div class="card">
+            <h2>Nos Produits</h2>
+            
+            <ul>
+                <li v-for="product in products">
+                    {{ product }}
+                </li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>Nos produits avec prix</h2>
+            <ul>
+                <li v-for="item in items"
+                :key="item.id">
+                    {{ item.name }}
+                    <br> 
+                    {{ item.price }} CHF
+                </li>
+            </ul>
+        </div>
     </div>
 
     <!-- Chargement de Vue.js 3 depuis le CDN -->
@@ -36,6 +49,15 @@
                         'Pantalon',
                         'Veste',
                         'Pull-over'
+                    ],
+
+                    items : [
+                        { id: 1, name : 'Chaussures', price: 50 },
+                        { id: 2, name : 'Chaussettes', price: 5 },
+                        { id: 3, name : 'T-shirt', price: 20 },
+                        { id: 4, name : 'Pantalon', price: 40 },
+                        { id: 5, name : 'Veste', price: 80 },
+                        { id: 6, name : 'Pull-over', price: 60 }
                     ]
                 }
             }
