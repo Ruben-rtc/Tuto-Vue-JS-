@@ -6,11 +6,13 @@
 </head>
 <body>
     <div id="app">
-        <p>Prix unitaire : {{ price }}</p>
-        
-        <p>Quantité : {{ quantity }}</p>
+        <p v-if="isAvailable">
+            Produit disponible !
+        </p>
 
-        <h3>Total : {{ totalPrice }}</h3>
+        <p v-else>
+            Produit non disponible
+        </p>
     </div>
 
     <!-- Chargement de Vue.js 3 depuis le CDN -->
@@ -22,14 +24,7 @@
         createApp({
             data() {
                 return {
-                    price : 15,
-                    quantity : 2
-                }
-            },
-        
-            computed: {
-                totalPrice() {
-                    return this.price * this.quantity;
+                    isAvailable: true, // Vous pouvez changer cette valeur pour tester le rendu conditionnel
                 }
             }
         }).mount('#app');
