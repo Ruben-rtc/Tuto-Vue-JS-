@@ -12,24 +12,58 @@
 <body>
     <div id="app">
         <div class="card">
-            <h2>Nos Produits</h2>
-            
-            <ul>
-                <li v-for="product in products">
-                    {{ product }}
-                </li>
-            </ul>
+            <h2>Bienvenue</h2>
+            <label>Votre nom :</label>
+
+            <!-- Champ texte -->
+            <input type="text" v-model="username">        
+
+            <p>Bonjour, {{ username }} !</p>
         </div>
+
         <div class="card">
-            <h2>Nos produits avec prix</h2>
-            <ul>
-                <li v-for="item in items"
-                :key="item.id">
-                    {{ item.name }}
-                    <br> 
-                    {{ item.price }} CHF
-                </li>
-            </ul>
+
+            <!-- Case à cocher -->  
+            <h2>Case à cocher</h2>
+            <label>Je s'appelle Groot</label>  
+
+            <input type="checkbox" v-model="accepted">
+
+            <p>Bonjour, {{ accepted ? 'Groot' : 'inconnu' }} !</p>
+        </div>
+
+        <div class="card">
+
+            <!-- Liste déroulante -->
+            <h2>Liste déroulante</h2>
+            <label>Choisissez votre pays :</label>
+            <select v-model="selectedCountry">
+                <option value="ch">Suisse</option>
+                <option value="nl">Pays-Bas</option>
+                <option value="fr">France</option>
+                <option value="de">Allemagne</option>
+            </select>
+
+            <p>Vous avez choisi : {{ selectedCountry }}</p>
+
+        </div>
+
+        <div class="card">
+            <h2>Zone de texte</h2>
+
+            <label>Commentaire :</label>
+            <br>
+            <textarea v-model="comment"></textarea>
+
+        </div>
+
+        <div class="card">
+            <h2>Résumé</h2>
+            <p>Nom : {{ username }}</p>
+            <p>Case à cocher : {{ accepted ? 'Groot' : 'inconnu' }}</p>
+            <p>Pays choisi : {{ selectedCountry }}</p>
+            <p>Commentaire : {{ comment }}</p>
+
         </div>
     </div>
 
@@ -42,23 +76,10 @@
         createApp({
             data() {
                 return {
-                    products : [
-                        'Chaussures',
-                        'Chaussettes',
-                        'T-shirt',
-                        'Pantalon',
-                        'Veste',
-                        'Pull-over'
-                    ],
-
-                    items : [
-                        { id: 1, name : 'Chaussures', price: 50 },
-                        { id: 2, name : 'Chaussettes', price: 5 },
-                        { id: 3, name : 'T-shirt', price: 20 },
-                        { id: 4, name : 'Pantalon', price: 40 },
-                        { id: 5, name : 'Veste', price: 80 },
-                        { id: 6, name : 'Pull-over', price: 60 }
-                    ]
+                    username: '',
+                    accepted: false,
+                    selectedCountry: '',
+                    comment: ''
                 }
             }
         }).mount('#app');
